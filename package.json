@@ -1,25 +1,227 @@
 {
 	"name": "background-custom",
+	"version": "0.0.1",
+	"publisher": "jhin",
 	"displayName": "background-custom",
 	"description": "custom background in your vscode",
-	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.30.0"
 	},
 	"categories": [
 		"Other"
 	],
-	"activationEvents": [
-		"onCommand:extension.helloWorld"
+	"keywords": [
+		"bg",
+		"diy",
+		"custom",
+		"background"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "extension.BackgroundCustomAuthor",
+				"title": "BackgroundCustom"
 			}
-		]
+		],
+		"configuration": {
+			"type": "object",
+			"title": "background-custom 插件配置",
+			"properties": {
+				"backgroundCustom.body.image": {
+					"type": "string",
+					"default": "",
+					"description": "图片路径"
+				},
+				"backgroundCustom.body.enabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "插件是否启用"
+				},
+				"backgroundCustom.body.opacity": {
+					"type": "number",
+					"default": 50,
+					"description": "透明度 0 ~ 100"
+				},
+				"backgroundCustom.body.setSize": {
+					"type": "string",
+					"default": "",
+					"description": "图片固定大小 支持百分比 值格式：宽(空格)高"
+				},
+				"backgroundCustom.body.autoSize": {
+					"type": "string",
+					"default": "cover",
+					"enum": [
+						"auto",
+						"full",
+						"width",
+						"height",
+						"cover",
+						"contain"
+					],
+					"enumDescriptions": [
+						"默认大小",
+						"铺满宽高",
+						"铺满宽度 高度自适应",
+						"铺满高度 宽度自适应",
+						"按图片最小边铺满",
+						"按图片最大边铺满"
+					],
+					"description": "图片自适应大小 设置固定大小后该属性失效"
+				},
+				"backgroundCustom.body.position": {
+					"type": "string",
+					"default": "cc",
+					"enum": [
+						"lt",
+						"lc",
+						"lb",
+						"ct",
+						"cc",
+						"cb",
+						"rt",
+						"rc",
+						"rb"
+					],
+					"enumDescriptions": [
+						"左对齐 + 上对齐",
+						"左对齐 + 垂直居中",
+						"左对齐 + 下对齐",
+						"水平居中 + 上对齐",
+						"水平居中 + 垂直居中",
+						"水平居中 + 下对齐",
+						"右对齐 + 上对齐",
+						"右对齐 + 垂直居中",
+						"右对齐 + 下对齐"
+					],
+					"description": "对齐方式"
+				},
+				"backgroundCustom.body.repeat": {
+					"type": "boolean",
+					"default": false,
+					"description": "是否重复显示以铺满屏幕"
+				},
+				"backgroundCustom.body.onlyEdit": {
+					"type": "boolean",
+					"default": false,
+					"description": "是否只显示编辑框背景图不显示大背景图"
+				},
+				"backgroundCustom.loop.images": {
+					"type": "array",
+					"default": [],
+					"description": "图片集合，每隔一段时间替换一次图片"
+				},
+				"backgroundCustom.loop.second": {
+					"type": "number",
+					"default": 3,
+					"description": "多长时间替换一次图片 单位:秒"
+				},
+				"backgroundCustom.edit.single": {
+					"type": "boolean",
+					"default": true,
+					"description": "是否每个编辑框单独一个背景图"
+				},
+				"backgroundCustom.edit.image": {
+					"type": "string",
+					"default": "",
+					"description": "编辑框默认背景图路径"
+				},
+				"backgroundCustom.edit.images": {
+					"type": "array",
+					"default": [],
+					"description": "编辑框背景图集合，每个编辑框单独的背景图"
+				},
+				"backgroundCustom.edit.random": {
+					"type": "boolean",
+					"default": true,
+					"description": "背景图集合是否随机顺序"
+				},
+				"backgroundCustom.edit.opacity": {
+					"type": "number",
+					"default": 50,
+					"description": "编辑框透明度 0 ~ 100"
+				},
+				"backgroundCustom.edit.setSize": {
+					"type": "string",
+					"default": "",
+					"description": "编辑框的背景图固定大小 支持百分比 值格式：宽(空格)高"
+				},
+				"backgroundCustom.edit.autoSize": {
+					"type": "string",
+					"default": "auto",
+					"enum": [
+						"auto",
+						"full",
+						"width",
+						"height",
+						"cover",
+						"contain"
+					],
+					"enumDescriptions": [
+						"默认大小",
+						"铺满宽高",
+						"铺满宽度 高度自适应",
+						"铺满高度 宽度自适应",
+						"按图片最小边铺满",
+						"按图片最大边铺满"
+					],
+					"description": "编辑框的背景图自适应大小 设置固定大小后该属性失效"
+				},
+				"backgroundCustom.edit.position": {
+					"type": "string",
+					"default": "rb",
+					"enum": [
+						"lt",
+						"lc",
+						"lb",
+						"ct",
+						"cc",
+						"cb",
+						"rt",
+						"rc",
+						"rb"
+					],
+					"enumDescriptions": [
+						"左对齐 + 上对齐",
+						"左对齐 + 垂直居中",
+						"左对齐 + 下对齐",
+						"水平居中 + 上对齐",
+						"水平居中 + 垂直居中",
+						"水平居中 + 下对齐",
+						"右对齐 + 上对齐",
+						"右对齐 + 垂直居中",
+						"右对齐 + 下对齐"
+					],
+					"description": "对齐方式"
+				},
+				"backgroundCustom.edit.repeat": {
+					"type": "boolean",
+					"default": false,
+					"description": "是否重复显示以铺满编辑框"
+				},
+				"backgroundCustom.edit.styles": {
+					"type": "array",
+					"default": [{
+						"opacity": 50,
+						"setSize": "",
+						"autoSize": "auto",
+						"position": "rb",
+						"repeat": false
+					}],
+					"description": "编辑框背景图设置集合，每个编辑框单独的背景图设置"
+				}
+			}
+		}
+	},
+	"activationEvents": [
+		"*"
+	],
+	"devDependencies": {
+		"typescript": "^3.1.4",
+		"vscode": "^1.1.25",
+		"tslint": "^5.8.0",
+		"@types/node": "^8.10.25",
+		"@types/mocha": "^2.2.42"
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
@@ -28,11 +230,5 @@
 		"postinstall": "node ./node_modules/vscode/bin/install",
 		"test": "npm run compile && node ./node_modules/vscode/bin/test"
 	},
-	"devDependencies": {
-		"typescript": "^3.1.4",
-		"vscode": "^1.1.25",
-		"tslint": "^5.8.0",
-		"@types/node": "^8.10.25",
-		"@types/mocha": "^2.2.42"
-	}
+	"icon": "https://www.jingxiapp.cn/images/vs.png"
 }

@@ -1,27 +1,26 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+// 模块 “vscode” 包含 VS Code 扩展性API
+// 导入模块并在下面的代码中用别名 vscode 引用它
+import * as vscode from 'vscode'
+import main from './main'
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+// 激活扩展时调用此方法
+// 您的扩展在第一次执行命令时被激活
 export function activate(context: vscode.ExtensionContext) {
+	// 已在 package.json 文件中定义的命令
+	// 使用 registerCommand 注册该命令并设置执行的函数
+	// 命令名称 必须与 package.json 中的定义的命令字段匹配
+	let disposable = vscode.commands.registerCommand('extension.BackgroundCustomAuthor', () => {
+		// 每次执行命令时，都会执行您在此处放置的代码。
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-		console.log('Congratulations, your extension "background-custom" is now active!');
+		// 向用户显示消息框
+		main.author()
+	})
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World!');
-	});
-
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(disposable)
+	context.subscriptions.push(main.watch())
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {}
+// 当扩展被停用时调用此方法
+export function deactivate() {
+
+}
