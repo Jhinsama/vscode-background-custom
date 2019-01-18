@@ -23,7 +23,7 @@ const SS2V: any = {
 
 function fixed (num: number) {
     num = num * 100
-    return num.toFixed(8).replace(/0*$/, '')
+    return num.toFixed(8).replace(/[\.0]*$/, '')
 }
 
 function outKeyframes (arr: any, minute: number) {
@@ -71,12 +71,12 @@ function outKeyframes (arr: any, minute: number) {
         }`
     }
     return `
-    [id="workbench.main.container"]:before { animation: jhinanimationbefore ${count}s infinite; -webkit-animation: jhinanimationbefore ${count}s infinite }
-    [id="workbench.main.container"]:after { animation: jhinanimationafter ${count}s infinite; -webkit-animation: jhinanimationafter ${count}s infinite }
     @keyframes jhinanimationbefore {${before}}
     @-webkit-keyframes jhinanimationbefore {${before}}
     @keyframes jhinanimationafter {${after}}
-    @-webkit-keyframes jhinanimationafter {${after}}`
+    @-webkit-keyframes jhinanimationafter {${after}}
+    [id="workbench.main.container"]:before { animation: jhinanimationbefore ${count}s infinite; -webkit-animation: jhinanimationbefore ${count}s infinite }
+    [id="workbench.main.container"]:after { animation: jhinanimationafter ${count}s infinite; -webkit-animation: jhinanimationafter ${count}s infinite }`
 }
 
 function outOpacity (opa: number, front: boolean = false) {
