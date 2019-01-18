@@ -43,22 +43,22 @@ class Background {
     }
 
     init () {
+        this.install()
         let loadPath = path.resolve(__dirname, './loadend')
         let loadend = fs.existsSync(loadPath)
         if (loadend) return false
         fs.writeFileSync(loadPath, author)
-        this.install()
-        this.vsInfo('很高兴您能使用 background-custom, 插件的相关配置可以在 settings.json 修改.')
+        this.vsInfo('欢迎使用 background-custom 插件, 插件的相关配置可以在 settings.json 修改.')
     }
 
     install () {
         let config = this.getConfig()
         let refresh = JSON.stringify(config.old) !== JSON.stringify(config.now)
-        if (!config.now.enabled) return this.uninstall(refresh)
+        if (!config.now.$enabled) return this.uninstall(refresh)
         let content = this.getCss()
         content = this.clsCss(content)
         let cssContent = outCss(config.now)
-        content = content + cssHead + cssContent + cssFoot
+        content = content + '\n' + cssHead + cssContent + '\n' + cssFoot
         this.setCss(content)
         if (refresh) this.vsReloadInfo('background-custom 配置发生改变，重启 vscode 生效。')
     }

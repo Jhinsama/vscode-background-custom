@@ -28,15 +28,15 @@
 			"type": "object",
 			"title": "background-custom 插件配置",
 			"properties": {
-				"backgroundCustom.body.image": {
-					"type": "string",
-					"default": "",
-					"description": "图片路径"
-				},
-				"backgroundCustom.body.enabled": {
+				"backgroundCustom.$enabled": {
 					"type": "boolean",
 					"default": true,
 					"description": "插件是否启用"
+				},
+				"backgroundCustom.body.image": {
+					"type": "string",
+					"default": "https://www.jingxiapp.cn/images/vs-body-1.jpg",
+					"description": "背景图路径"
 				},
 				"backgroundCustom.body.opacity": {
 					"type": "number",
@@ -46,7 +46,7 @@
 				"backgroundCustom.body.setSize": {
 					"type": "string",
 					"default": "",
-					"description": "图片固定大小 支持百分比 值格式：宽(空格)高"
+					"description": "背景图固定大小 支持百分比 值格式：宽(空格)高"
 				},
 				"backgroundCustom.body.autoSize": {
 					"type": "string",
@@ -67,7 +67,7 @@
 						"按图片最小边铺满",
 						"按图片最大边铺满"
 					],
-					"description": "图片自适应大小 设置固定大小后该属性失效"
+					"description": "背景图自适应大小 设置固定大小后该属性失效"
 				},
 				"backgroundCustom.body.position": {
 					"type": "string",
@@ -101,40 +101,44 @@
 					"default": false,
 					"description": "是否重复显示以铺满屏幕"
 				},
-				"backgroundCustom.body.onlyEdit": {
+				"backgroundCustom.body.show": {
+					"type": "boolean",
+					"default": true,
+					"description": "是否显示整体背景图"
+				},
+				"backgroundCustom.loop.run": {
 					"type": "boolean",
 					"default": false,
-					"description": "是否只显示编辑框背景图不显示大背景图"
+					"description": "是否开启背景图轮播"
+				},
+				"backgroundCustom.loop.random": {
+					"type": "boolean",
+					"default": false,
+					"description": "背景轮播图集合是否随机顺序"
 				},
 				"backgroundCustom.loop.images": {
 					"type": "array",
-					"default": [],
-					"description": "图片集合，每隔一段时间替换一次图片"
+					"default": [
+						"https://www.jingxiapp.cn/images/vs-body-1.jpg",
+						"https://www.jingxiapp.cn/images/vs-body-2.jpg",
+						"https://www.jingxiapp.cn/images/vs-body-3.jpg",
+						"https://www.jingxiapp.cn/images/vs-body-4.jpg",
+						"https://www.jingxiapp.cn/images/vs-body-5.jpg",
+						"https://www.jingxiapp.cn/images/vs-body-6.jpg",
+						"https://www.jingxiapp.cn/images/vs-body-7.jpg",
+						"https://www.jingxiapp.cn/images/vs-body-8.jpg"
+					],
+					"description": "背景图轮播的图片路径集合，每隔一段时间替换一次图片"
 				},
-				"backgroundCustom.loop.second": {
+				"backgroundCustom.loop.minute": {
 					"type": "number",
 					"default": 3,
-					"description": "多长时间替换一次图片 单位:秒"
-				},
-				"backgroundCustom.edit.single": {
-					"type": "boolean",
-					"default": true,
-					"description": "是否每个编辑框单独一个背景图"
+					"description": "多长时间替换一次图片 单位:分钟"
 				},
 				"backgroundCustom.edit.image": {
 					"type": "string",
-					"default": "",
+					"default": "https://www.jingxiapp.cn/images/vs-edit-1.png",
 					"description": "编辑框默认背景图路径"
-				},
-				"backgroundCustom.edit.images": {
-					"type": "array",
-					"default": [],
-					"description": "编辑框背景图集合，每个编辑框单独的背景图"
-				},
-				"backgroundCustom.edit.random": {
-					"type": "boolean",
-					"default": true,
-					"description": "背景图集合是否随机顺序"
 				},
 				"backgroundCustom.edit.opacity": {
 					"type": "number",
@@ -198,6 +202,25 @@
 					"type": "boolean",
 					"default": false,
 					"description": "是否重复显示以铺满编辑框"
+				},
+				"backgroundCustom.edit.show": {
+					"type": "boolean",
+					"default": true,
+					"description": "是否显示编辑框背景图"
+				},
+				"backgroundCustom.edit.images": {
+					"type": "array",
+					"default": [
+						"https://www.jingxiapp.cn/images/vs-edit-1.png",
+						"https://www.jingxiapp.cn/images/vs-edit-2.png",
+						"https://www.jingxiapp.cn/images/vs-edit-3.png"
+					],
+					"description": "编辑框背景图集合，每个编辑框单独的背景图"
+				},
+				"backgroundCustom.edit.random": {
+					"type": "boolean",
+					"default": true,
+					"description": "背景图集合是否随机顺序"
 				},
 				"backgroundCustom.edit.styles": {
 					"type": "array",
