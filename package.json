@@ -4,6 +4,10 @@
 	"publisher": "jhin",
 	"displayName": "background-custom",
 	"description": "custom background in your vscode",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Jhinsama/vscode-background-custom"
+	},
 	"engines": {
 		"vscode": "^1.30.0"
 	},
