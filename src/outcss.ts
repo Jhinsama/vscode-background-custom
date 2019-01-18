@@ -23,7 +23,7 @@ const SS2V: any = {
 
 function fixed (num: number) {
     num = num * 100
-    return num.toFixed(8).replace(/[\.0]*$/, '')
+    return num.toFixed(8).replace(/\.?0*$/, '')
 }
 
 function outKeyframes (arr: any, minute: number) {
