@@ -1,6 +1,6 @@
 {
 	"name": "background-custom",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "JhinSama",
 	"displayName": "background-custom",
 	"description": "custom background in your vscode",
@@ -228,13 +228,15 @@
 				},
 				"backgroundCustom.edit.styles": {
 					"type": "array",
-					"default": [{
-						"opacity": 50,
-						"setSize": "",
-						"autoSize": "auto",
-						"position": "rb",
-						"repeat": false
-					}],
+					"default": [
+						{
+							"opacity": 50,
+							"setSize": "",
+							"autoSize": "auto",
+							"position": "rb",
+							"repeat": false
+						}
+					],
 					"description": "编辑框背景图设置集合，每个编辑框单独的背景图设置"
 				}
 			}
