@@ -113,7 +113,7 @@
 				"backgroundCustom.loop.run": {
 					"type": "boolean",
 					"default": false,
-					"description": "是否开启背景图轮播"
+					"description": "是否开启背景图轮播 Tip:开启轮播图可能导致编辑器运行变慢"
 				},
 				"backgroundCustom.loop.random": {
 					"type": "boolean",
@@ -224,7 +224,7 @@
 				"backgroundCustom.edit.random": {
 					"type": "boolean",
 					"default": true,
-					"description": "背景图集合是否随机顺序"
+					"description": "编辑框背景图集合是否随机顺序"
 				},
 				"backgroundCustom.edit.styles": {
 					"type": "array",
@@ -237,7 +237,7 @@
 							"repeat": false
 						}
 					],
-					"description": "编辑框背景图设置集合，每个编辑框单独的背景图设置"
+					"description": "编辑框背景图设置集合，每个编辑框单独的背景图的设置"
 				}
 			}
 		}

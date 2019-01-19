@@ -57,6 +57,7 @@ function outKeyframes (arr: any, minute: number) {
         }
         ${fixed((sec * (num + 2) - 3) / count)}% {
             opacity: 1;
+            background-image: url(${arr[num + 1]});
         }`
     }
     if (len) {
@@ -75,8 +76,20 @@ function outKeyframes (arr: any, minute: number) {
     @-webkit-keyframes jhinanimationbefore {${before}}
     @keyframes jhinanimationafter {${after}}
     @-webkit-keyframes jhinanimationafter {${after}}
-    [id="workbench.main.container"]:before { animation: jhinanimationbefore ${count}s infinite; -webkit-animation: jhinanimationbefore ${count}s infinite }
-    [id="workbench.main.container"]:after { animation: jhinanimationafter ${count}s infinite; -webkit-animation: jhinanimationafter ${count}s infinite }`
+    [id="workbench.main.container"]:before, [id="workbench.main.container"]:after {
+        backface-visibility: hidden;
+        transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+    [id="workbench.main.container"]:before {
+        animation: jhinanimationbefore ${count}s infinite;
+        -webkit-animation: jhinanimationbefore ${count}s infinite;
+    }
+    [id="workbench.main.container"]:after {
+        animation: jhinanimationafter ${count}s infinite;
+        -webkit-animation: jhinanimationafter ${count}s infinite;
+    }`
 }
 
 function outOpacity (opa: number, front: boolean = false) {

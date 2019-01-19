@@ -5,7 +5,7 @@
 ## Warns 警告：
 
 > **本插件是通过修改 vscode 的 css 文件的方式运行**  
-> 所以会在初次安装，或者 vscode 升级的时候，会显示 vscode 损坏的提示
+> 所以会在初次安装，或者 vscode 升级的时候，会显示 vscode 损坏的提示  
 > 请选择 【不再提示】
 
 ## Uninstall 卸载
