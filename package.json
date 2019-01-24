@@ -1,6 +1,6 @@
 {
 	"name": "background-custom",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"publisher": "JhinSama",
 	"displayName": "background-custom",
 	"description": "custom background in your vscode",
@@ -110,17 +110,22 @@
 					"default": true,
 					"description": "是否显示整体背景图"
 				},
-				"backgroundCustom.loop.run": {
-					"type": "boolean",
-					"default": false,
-					"description": "是否开启背景图轮播 Tip:开启轮播图可能导致编辑器运行变慢"
+				"backgroundCustom.body.mode": {
+					"type": "string",
+					"default": "random",
+					"enum": [
+						"loop",
+						"random",
+						"single"
+					],
+					"enumDescriptions": [
+						"循环轮播背景图 图片路径取images的值 开启轮播可能导致编辑器运行变慢 使用本地路径能稍稍缓解",
+						"每次打开vscode都会随机显示一张背景图 图片路径取images的值",
+						"只显示固定的一张背景图 图片路径取image的值"
+					],
+					"description": "背景图展示的方式"
 				},
-				"backgroundCustom.loop.random": {
-					"type": "boolean",
-					"default": false,
-					"description": "背景轮播图集合是否随机顺序"
-				},
-				"backgroundCustom.loop.images": {
+				"backgroundCustom.body.images": {
 					"type": "array",
 					"default": [
 						"https://www.jingxiapp.cn/images/vs-body-1.jpg",
@@ -133,6 +138,11 @@
 						"https://www.jingxiapp.cn/images/vs-body-8.jpg"
 					],
 					"description": "背景图轮播的图片路径集合，每隔一段时间替换一次图片"
+				},
+				"backgroundCustom.loop.random": {
+					"type": "boolean",
+					"default": false,
+					"description": "背景轮播图集合是否随机顺序"
 				},
 				"backgroundCustom.loop.minute": {
 					"type": "number",
@@ -212,6 +222,11 @@
 					"default": true,
 					"description": "是否显示编辑框背景图"
 				},
+				"backgroundCustom.edit.random": {
+					"type": "boolean",
+					"default": true,
+					"description": "编辑框背景图集合是否随机顺序"
+				},
 				"backgroundCustom.edit.images": {
 					"type": "array",
 					"default": [
@@ -220,11 +235,6 @@
 						"https://www.jingxiapp.cn/images/vs-edit-3.png"
 					],
 					"description": "编辑框背景图集合，每个编辑框单独的背景图"
-				},
-				"backgroundCustom.edit.random": {
-					"type": "boolean",
-					"default": true,
-					"description": "编辑框背景图集合是否随机顺序"
 				},
 				"backgroundCustom.edit.styles": {
 					"type": "array",

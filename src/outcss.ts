@@ -98,14 +98,22 @@ function outOpacity (opa: number, front: boolean = false) {
     return (200 - opa * 2 + 800) / 1000
 }
 
-function outRandom (arr: [string]) {
+function outRandom (arr: string[]) {
     let res: any = []
     let len = arr.length
     for (let i = 0; i < len; i++) {
-        let index = ~~(Math.random() * (arr.length - 0.001))
+        let index = outRandomNum(arr.length)
         res.push(arr.splice(index, 1)[0])
     }
     return res
+}
+
+function outRandomNum (max: number, min: number = 0) {
+    return ~~(Math.random() * (max - 0.001)) + min
+}
+function outSingleRandom (arr: string[]) {
+    let index = outRandomNum(arr.length)
+    return arr[index]
 }
 
 export default function outCss (options: WorkspaceConfiguration) {
@@ -117,10 +125,14 @@ export default function outCss (options: WorkspaceConfiguration) {
     let bPosi = body.position
     let bRepe = body.repeat
     let bShow = body.show
+    let bMode = body.mode
+    let bImgs = body.images
+
+    bImge = bMode === 'random' ? bImgs.length > 0 ? outSingleRandom(bImgs) : bImge : bImge
 
     let loop = options.loop
-    let lRun = loop.run
-    let lImg = loop.images
+    let lRun = bMode === 'loop'
+    let lImg = bImgs
     let lMin = loop.minute
     let lRan = loop.random
 
