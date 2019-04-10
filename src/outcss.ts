@@ -76,17 +76,17 @@ function outKeyframes (arr: any, minute: number) {
     @-webkit-keyframes jhinanimationbefore {${before}}
     @keyframes jhinanimationafter {${after}}
     @-webkit-keyframes jhinanimationafter {${after}}
-    [id="workbench.main.container"]:before, [id="workbench.main.container"]:after {
+    .monaco-workbench:before, .monaco-workbench:after {
         backface-visibility: hidden;
         transform: translate3d(0, 0, 0);
         -webkit-backface-visibility: hidden;
         -webkit-transform: translate3d(0, 0, 0);
     }
-    [id="workbench.main.container"]:before {
+    .monaco-workbench:before {
         animation: jhinanimationbefore ${count}s infinite;
         -webkit-animation: jhinanimationbefore ${count}s infinite;
     }
-    [id="workbench.main.container"]:after {
+    .monaco-workbench:after {
         animation: jhinanimationafter ${count}s infinite;
         -webkit-animation: jhinanimationafter ${count}s infinite;
     }`;
@@ -153,8 +153,8 @@ export default function outCss (options: WorkspaceConfiguration) {
     if (bShow && lRun) { cssStr += outKeyframes(lRan ? outRandom(lImg) : lImg, lMin); }
 
     if (bShow) { cssStr += `
-    [id="workbench.main.container"]:before,
-    [id="workbench.main.container"]:after {
+    .monaco-workbench:before,
+    .monaco-workbench:after {
         content: '';
         position: absolute;
         top: 0;
@@ -166,10 +166,10 @@ export default function outCss (options: WorkspaceConfiguration) {
         background-repeat: ${bRepe ? 'repeat' : 'no-repeat'};
         background-position: ${PS2V[bPosi]};
     }
-    [id="workbench.main.container"]:before { z-index: -2 }
-    [id="workbench.main.container"]:after { z-index: -1 }
-    [id="workbench.main.container"]>div { opacity: ${outOpacity(bOpac)} }
-    [id="workbench.main.container"]>.titlebar { z-index: 1 }`;
+    .monaco-workbench:before { z-index: -2 }
+    .monaco-workbench:after { z-index: -1 }
+    .monaco-workbench>div { opacity: ${outOpacity(bOpac)} }
+    .monaco-workbench>.titlebar { z-index: 1 }`;
     }
 
     if (!eShow) { return cssStr; }
